@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+
+  <head>
+
+
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+
+        @font-face {
+            font-family: 'fourHandTrial';
+            src: url('fourHand_TRIAL.ttf');
+        }
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:300" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <style>
+      #div1,
+      #div2,
+      #div3,
+      #div4,
+      #div5{
+        width: 200px;
+        height: 200px;
+        margin: 25px;
+        padding: 30px;
+        border: 3px solid black;
+        display: inline-block;
+      }
+      
+      #pool {
+        width: 100%;
+        height: 40%;
+        border: 3px solid black;
+        padding: 10px;
+         box-shadow: 0 0 10px #9ecaed;
+      }
+
+
+
+
+      #heading{
+
+        color:#D6D6D6;
+        padding-left: 40%;
+
+      }
+      .pool{
+
+          size: 40px;
+          margin: 10px;
+          margin-right: 1px;
+          padding: 20px;
+
+        }
+
+     
+
+        .labels{
+
+            padding-right: 20px;
+            padding-left: 60px;
+            
+
+        }
+
+body{
+  z-index:1000000000;
+
+
+}
+
+
+#text{
+
+  padding:0.3px;
+
+}
+
+
+#wrapper{
+ width: 80%;
+  margin: 0 auto;  
+}
+
+.fancygrow{
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 30px;
+  width: 100%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#002c44+0,0083c9+100 */
+background: #002c44; /* Old browsers */
+background: -moz-linear-gradient(45deg, #002c44 0%, #0083c9 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg, #002c44 0%,#0083c9 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg, #002c44 0%,#0083c9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002c44', endColorstr='#0083c9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  display: block;
+  text-align: center;
+  max-width: 400px;
+  height: 50px;
+  line-height: 50px;
+  margin: 25px auto;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px 20px 20px 20px;
+-moz-border-radius: 20px 20px 20px 20px;
+-webkit-border-radius: 20px 20px 20px 20px;
+border: 0px solid #000000;
+   -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.fancygrow:hover{
+-webkit-box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
+-moz-box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
+box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
+ 
+  transform: scale(1.050, 1.050);
+-webkit-transform: scale(1.050, 1.050);
+-moz-transform: scale(1.050, 1.050);
+-o-transform: scale(1.050, 1.050);
+-ms-transform: scale(1.050, 1.050);
+}
+
+
+
+
+#pool-heading{
+  background-color: #C8F4FC;
+  float:center;
+  size: 30px;
+  padding: 30px;
+}
+
+
+
+.rest{
+
+  z-index=1000000000000000;
+
+
+}
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      var attempt = 0;
+
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        var data = JSON.stringify({
+          target_id: ev.target.id,
+          ans: ev.target.getAttribute('data-ans')
+        });
+        ev.dataTransfer.setData("img", data);
+        console.log();
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("img");
+        ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
+      }
+
+      function verify() {
+        attempt += 1;
+        var ans = true;
+        var c = document.getElementById('div1').childNodes;
+        if (c[0] != null && c[0].dataset.ans != 'div1') {
+          ans = false;
+          document.getElementById("pool").appendChild(c[0]);
+        }
+
+        var c = document.getElementById('div2').childNodes;
+        if (c[0] != null && c[0].dataset.ans != 'div2') {
+          ans = false;
+          document.getElementById("pool").appendChild(c[0]);
+        }
+
+        var c = document.getElementById('div3').childNodes;
+        if (c[0] != null && c[0].dataset.ans != 'div3') {
+          ans = false;
+          document.getElementById("pool").appendChild(c[0]);
+        }
+
+        var c = document.getElementById('div4').childNodes;
+        if (c[0] != null && c[0].dataset.ans != 'div4') {
+          ans = false;
+          document.getElementById("pool").appendChild(c[0]);
+        }
+
+          var c = document.getElementById('div2').childNodes;
+        if (c[0] != null && c[0].dataset.ans != 'div5') {
+          ans = false;
+          document.getElementById("pool").appendChild(c[0]);
+        }
+
+
+        if (ans) {
+          $("#msg").html("Perfect!");
+        } else {
+          $("#msg").html("Nah,it's wrong :(");
+        }
+
+        if (attempt > 2) {
+          $("#showAns").show();
+        }
+
+      }
+
+      function showAns() {
+        var ansStr = "DIV1 = IMG4, DIV2 = IMG3, DIV3 = IMG2, DIV4 = IMG1, DIV5=IMG5";
+        $("#ans_msg").html(ansStr);
+      }
+
+
+    </script>
+
+<!--leaves baclground-->
+ 
+
+
+
+
+
+  </head>
+
+  <body>
+  
+
+
+<div class="rest">  
+<nav class="navbar navbar-inverse" id="heading">
+    <h2 style="padding-left:5px;">Drag and drop the items in the correct category bin!</h2>
+    
+</nav>
+
+
+
+    <div style="display:inline-block">
+      <div class="labels">
+        <label id="text">Non-recycleable</label>
+      </div>
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+
+
+    <div style="display:inline-block">
+      <div class="labels">
+        <label id="text">Non-biodegradeable</label>
+      </div>
+      <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <div style="display:inline-block">
+      <div class="labels">
+        <label id="text">Reusable</label>
+      </div>
+      <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+   <div style="display:inline-block">
+      <div class="labels">
+        <label id="text">Biodegradeable</label>
+      </div>
+      <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+
+
+
+
+
+
+
+    
+    <div style="display:inline-flex;" ondrop="drop(event)" ondragover="allowDrop(event)" id="pool">
+
+      <img class="pool" src="shirt.png" draggable="true" ondragstart="drag(event)" id="drag1" data-ans="div4" width="160" height="150">
+      <img class="pool" src="bott.png" draggable="true" ondragstart="drag(event)" id="drag2" data-ans="div3" width=100" height="150">
+     
+      <img class="pool" src="bulb3.png" draggable="true" ondragstart="drag(event)" id="drag4" data-ans="div1" width=250" height="170">
+      <img class="pool" src="peels.png" draggable="true" ondragstart="drag(event)" id="drag5" data-ans="div5" width=200" height="150">
+    </div>
+
+</div>
+
+
+
+
+<!--to verify ans-->
+
+
+    <div>
+
+      <button id="showAns" onClick="showAns()" style="display: none;"> Show Answer </button>
+      <h2 id="msg"></h2>
+      <h2 id="ans_msg"></h2>
+    </div>
+
+      
+     <div id="wrapper">
+    
+   <button class="fancygrow" id="yo" onClick="verify()"><i class="fa fa-caret-square-o-up famargin" aria-hidden="true"></i> Verify Answer </button>
+
+       
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+</html>
