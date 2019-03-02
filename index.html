@@ -56,7 +56,7 @@
       #heading{
 
         color:#D6D6D6;
-        padding-left: 40%;
+        
 
       }
       .pool{
@@ -204,11 +204,7 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
           document.getElementById("pool").appendChild(c[0]);
         }
 
-        var c = document.getElementById('div2').childNodes;
-        if (c[0] != null && c[0].dataset.ans != 'div2') {
-          ans = false;
-          document.getElementById("pool").appendChild(c[0]);
-        }
+ 
 
         var c = document.getElementById('div3').childNodes;
         if (c[0] != null && c[0].dataset.ans != 'div3') {
@@ -222,7 +218,7 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
           document.getElementById("pool").appendChild(c[0]);
         }
 
-          var c = document.getElementById('div2').childNodes;
+          var c = document.getElementById('div5').childNodes;
         if (c[0] != null && c[0].dataset.ans != 'div5') {
           ans = false;
           document.getElementById("pool").appendChild(c[0]);
@@ -230,7 +226,7 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
 
 
         if (ans) {
-          $("#msg").html("Perfect!");
+          $("#msg").html("<h1>Perfect!</h1>");
         } else {
           $("#msg").html("Nah,it's wrong :(");
         }
@@ -242,7 +238,7 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
       }
 
       function showAns() {
-        var ansStr = "DIV1 = IMG4, DIV2 = IMG3, DIV3 = IMG2, DIV4 = IMG1, DIV5=IMG5";
+        var ansStr = "BULB,BOTTLE,TSHIRT,BANANA PEEL";
         $("#ans_msg").html(ansStr);
       }
 
@@ -264,7 +260,7 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
 
 <div class="rest">  
 <nav class="navbar navbar-inverse" id="heading">
-    <h2 style="padding-left:5px;">Drag and drop the items in the correct category bin!</h2>
+    <h2 style="text-align: center;">Drag and drop the items in the correct category bin!</h2>
     
 </nav>
 
@@ -324,23 +320,28 @@ box-shadow: 0px 14px 23px -10px rgba(0,44,68,0.56);
 <!--to verify ans-->
 
 
-    <div>
-
-      <button id="showAns" onClick="showAns()" style="display: none;"> Show Answer </button>
-      <h2 id="msg"></h2>
-      <h2 id="ans_msg"></h2>
-    </div>
 
       
      <div id="wrapper">
     
    <button class="fancygrow" id="yo" onClick="verify()"><i class="fa fa-caret-square-o-up famargin" aria-hidden="true"></i> Verify Answer </button>
 
-       
+      
   </div>
 
 
+     
+     <div id="wrapper">
+    
+   
+      <button class="fancygrow" id="showAns" onClick="showAns()" style="display: none;"><i class="fa fa-caret-square-o-up famargin" aria-hidden="true"></i> Show Answer </button>
+      <h2 id="msg"></h2>
+      <h2 id="ans_msg"></h2>
 
+      
+  </div>
+
+   
 
 
 
